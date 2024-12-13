@@ -4,8 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.ArrayList;
 import java.util.List;
 
-// Updated DataToMetadataConverter class implementing MetadataConverter
-public class DataToMetadataConverter implements MetadataConverter {
+public class JsonMetadataConverter implements MetadataConverter {
 
     @Override
     public List<Metadata> convertToMetadata(String[] headers) {
@@ -19,6 +18,6 @@ public class DataToMetadataConverter implements MetadataConverter {
     @Override
     public String metadataToFormattedString(List<Metadata> metadataList) throws Exception {
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.writeValueAsString(metadataList); // Converts metadata to JSON format
+        return mapper.writeValueAsString(metadataList);
     }
 }
