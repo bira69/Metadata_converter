@@ -4,14 +4,13 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+        // Sample CSV headers
+        String[] headers = {"Name", "Age", "Email"};
+        
         try {
-            MetadataConverter converter = new DataToMetadataConverter(); // Using the interface
-
-            // Sample CSV headers
-            String[] headers = {"Name", "Age", "Email"};
-
             // Convert CSV headers to metadata
-            List<Metadata> metadataList = converter.convertToMetadata(headers);
+            MetadataConverter jsonConverter = new DataToMetadataConverter(); // JSON format converter
+            List<Metadata> metadataList = jsonConverter.convertToMetadata(headers);
 
             // Print the generated metadata
             System.out.println("Generated Metadata:");
@@ -20,9 +19,22 @@ public class Main {
             }
 
             // Convert metadata to JSON and print it
-            String metadataJson = converter.metadataToFormattedString(metadataList);
+            String metadataJson = jsonConverter.metadataToFormattedString(metadataList);
             System.out.println("\nMetadata in JSON format:");
             System.out.println(metadataJson);
+
+            // Convert metadata to XML and print it
+            MetadataConverter xmlConverter = new XMLMetadataConverter(); // XML format converter
+            String metadataXml = xmlConverter.metadataToFormattedString(metadataList);
+            System.out.println("\nMetadata in XML format:");
+            System.out.println(metadataXml);
+
+            // You can also implement YAML similarly:
+            // MetadataConverter yamlConverter = new YAMLMetadataConverter();
+            // String metadataYaml = yamlConverter.metadataToFormattedString(metadataList);
+            // System.out.println("\nMetadata in YAML format:");
+            // System.out.println(metadataYaml);
+
         } catch (Exception e) {
             e.printStackTrace();
         }

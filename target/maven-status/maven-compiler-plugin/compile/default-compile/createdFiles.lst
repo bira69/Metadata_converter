@@ -1,0 +1,7 @@
+com\example\DataToMetadataConverter.class
+com\example\Metadata.class
+com\example\Main.class
+com\example\MetadataConverter.class
+com\example\MetadataWrapper.class
+com\example\XMLMetadataConverter.class
+com\example\JsonMetadataConverter.class
